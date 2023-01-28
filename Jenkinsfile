@@ -1,14 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Stage1') {
+        stage('checkout') {
             steps {
-                echo 'Jenkins pipeline stage 1'
+                git branch: 'main', credentialsId: 'github_private_repo_creds', url: 'git@github.com:turancyberhub/jenkins-private.git'
             }
         }
         stage('Stage2') {
             steps {
-                echo 'Jenkins pipeline stage 2'
+                sh '''ls /var/lib/jenkins
+                    echo "testing pipeline"'''
             }
         }
         stage('Stage3') {
