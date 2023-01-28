@@ -14,8 +14,13 @@ pipeline {
         }
         stage('Stage3') {
             steps {
-                echo 'Jenkins pipeline stage 3'
+                echo 'Build number is : ${env.BUILD_NUMBER}'
             }
+        }
+    }
+    post {
+        always {
+            cleanWs()
         }
     }
 }
